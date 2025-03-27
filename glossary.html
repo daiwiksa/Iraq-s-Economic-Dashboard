@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Iraq's Economic Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="iraq flag.mp4" type="video/mp4">
+    </video>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html" class="active"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>Economic Glossary</h1>
+            <p class="subtitle">Key Terms and Definitions in Iraq's Economic Context</p>
+        </header>
+
+        <section class="glossary-search">
+            <div class="search-container">
+                <input type="text" id="glossarySearch" placeholder="Search terms..." onkeyup="searchGlossary()">
+                <i class="fas fa-search"></i>
+            </div>
+        </section>
+
+        <section class="glossary-content">
+            <div class="glossary-grid">
+                <div class="glossary-category">
+                    <h2>Macroeconomic Indicators</h2>
+                    <div class="term-card">
+                        <h3>GDP (Gross Domestic Product)</h3>
+                        <p>The total value of all goods and services produced within Iraq's borders in a given period. A key measure of economic activity and growth. Iraq's GDP is heavily influenced by oil production and exports, with significant fluctuations based on global oil prices.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Inflation Rate</h3>
+                        <p>The percentage change in the general price level of goods and services over time. High inflation can erode purchasing power and economic stability. Iraq has experienced periods of high inflation due to political instability and currency fluctuations.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Unemployment Rate</h3>
+                        <p>The percentage of the labor force that is actively seeking employment but unable to find work. A critical indicator of economic health and social stability. Iraq faces challenges with high youth unemployment and underemployment in the private sector.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Fiscal Deficit</h3>
+                        <p>The difference between government spending and revenue. A persistent deficit can lead to increased public debt and economic instability. Iraq's fiscal position is closely tied to oil revenues and government spending on reconstruction and public services.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Current Account Balance</h3>
+                        <p>The difference between a country's savings and investment, including trade balance, net income from abroad, and net current transfers. Iraq's current account is heavily influenced by oil exports and foreign aid.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Real GDP Growth Rate</h3>
+                        <p>The annual percentage change in GDP adjusted for inflation. This measure provides a more accurate picture of economic growth by accounting for price changes. Iraq's growth rate has been volatile due to oil price fluctuations and security challenges.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Oil Sector Terms</h2>
+                    <div class="term-card">
+                        <h3>OPEC (Organization of the Petroleum Exporting Countries)</h3>
+                        <p>An intergovernmental organization of oil-producing nations that coordinates petroleum policies and stabilizes oil markets. Iraq is a key member of OPEC, with significant influence on global oil supply decisions.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Oil Revenue</h3>
+                        <p>Income generated from oil exports, which constitutes a major portion of Iraq's government revenue and foreign exchange earnings. Oil revenues fund approximately 90% of the government budget.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Production Quota</h3>
+                        <p>The maximum amount of oil that Iraq is allowed to produce under OPEC agreements, aimed at maintaining stable oil prices. Iraq's quota has been subject to negotiations due to its need for reconstruction funding.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Downstream Industry</h3>
+                        <p>Activities related to refining, processing, and distributing petroleum products, representing potential areas for economic diversification. Iraq aims to expand its downstream capacity to capture more value from its oil resources.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Oil Reserves</h3>
+                        <p>Proven quantities of oil that can be commercially recovered. Iraq has the world's fifth-largest proven oil reserves, estimated at over 145 billion barrels, primarily located in the southern fields.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Service Contracts</h3>
+                        <p>Agreements between the Iraqi government and international oil companies for oil field development. These contracts provide technical expertise and investment while maintaining state ownership of resources.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Trade Terms</h2>
+                    <div class="term-card">
+                        <h3>Trade Balance</h3>
+                        <p>The difference between a country's exports and imports. Iraq maintains a positive trade balance primarily due to oil exports, but faces challenges in developing non-oil exports.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Exchange Rate</h3>
+                        <p>The value of the Iraqi Dinar relative to other currencies, affecting trade competitiveness and foreign investment. The exchange rate is managed by the Central Bank of Iraq to maintain stability.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Foreign Direct Investment (FDI)</h3>
+                        <p>Investment from foreign entities in Iraq's businesses or infrastructure, crucial for economic development and technology transfer. Iraq has implemented reforms to attract more FDI, particularly in non-oil sectors.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Trade Diversification</h3>
+                        <p>The process of expanding export markets and products beyond oil to reduce economic vulnerability. Iraq aims to develop sectors like agriculture, manufacturing, and services.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Import Substitution</h3>
+                        <p>A strategy to reduce foreign dependency by developing domestic industries to produce goods previously imported. Iraq is implementing policies to support local manufacturing.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Trade Agreements</h3>
+                        <p>Bilateral or multilateral agreements that govern trade relations between countries. Iraq has signed various trade agreements to expand market access and attract investment.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Social Indicators</h2>
+                    <div class="term-card">
+                        <h3>Literacy Rate</h3>
+                        <p>The percentage of the population aged 15 and above who can read and write, indicating educational development. Iraq has made progress in improving literacy, though regional disparities persist.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Poverty Rate</h3>
+                        <p>The percentage of the population living below the poverty line, based on income and basic needs. Poverty remains a significant challenge, particularly in rural areas and among internally displaced persons.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Human Development Index (HDI)</h3>
+                        <p>A composite measure of life expectancy, education, and per capita income, indicating overall development. Iraq's HDI has been affected by conflict and economic challenges.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Youth Unemployment</h3>
+                        <p>The unemployment rate among young people (typically 15-24 years), often higher than the overall rate. High youth unemployment poses social and economic challenges.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Gender Inequality Index</h3>
+                        <p>A measure of gender disparities in health, education, and economic participation. Iraq faces challenges in achieving gender equality in economic opportunities.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Access to Basic Services</h3>
+                        <p>The percentage of the population with access to essential services like electricity, water, and healthcare. Improving service delivery remains a priority for development.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Infrastructure Terms</h2>
+                    <div class="term-card">
+                        <h3>Oil Infrastructure</h3>
+                        <p>Physical facilities including pipelines, refineries, and export terminals for oil production and distribution. Iraq's oil infrastructure requires significant investment for modernization and expansion.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Port Capacity</h3>
+                        <p>The maximum amount of cargo that can be handled by Iraq's ports, crucial for trade efficiency. Port development is essential for expanding non-oil exports.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Transportation Network</h3>
+                        <p>The system of roads, railways, and other transport facilities connecting different regions of Iraq. Infrastructure development is key to economic integration and growth.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Energy Grid</h3>
+                        <p>The network for generating, transmitting, and distributing electricity throughout the country. Iraq faces challenges in meeting growing electricity demand.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Digital Infrastructure</h3>
+                        <p>The telecommunications and information technology systems supporting digital services. Iraq is investing in expanding internet access and digital services.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Water Management</h3>
+                        <p>Systems for water supply, treatment, and distribution. Water infrastructure is crucial for agriculture and industrial development.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Policy Terms</h2>
+                    <div class="term-card">
+                        <h3>Economic Reform</h3>
+                        <p>Changes in economic policies and institutions aimed at improving efficiency and growth. Iraq's reform program focuses on reducing corruption and improving business climate.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Privatization</h3>
+                        <p>The transfer of state-owned enterprises to private ownership, often part of economic reforms. Iraq is gradually implementing privatization in various sectors.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Monetary Policy</h3>
+                        <p>Central bank actions to control money supply and interest rates to achieve economic goals. The Central Bank of Iraq focuses on maintaining price stability.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Fiscal Policy</h3>
+                        <p>Government decisions about spending and taxation to influence economic conditions. Iraq's fiscal policy is heavily dependent on oil revenues.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Industrial Policy</h3>
+                        <p>Government strategies to promote industrial development and economic diversification. Iraq aims to develop manufacturing and processing industries.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Investment Policy</h3>
+                        <p>Framework governing foreign and domestic investment, including incentives and regulations. Iraq has implemented reforms to attract more investment.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Financial Terms</h2>
+                    <div class="term-card">
+                        <h3>Public Debt</h3>
+                        <p>The total amount of money owed by the government to domestic and foreign creditors. Iraq's public debt has increased due to reconstruction needs and budget deficits.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Foreign Reserves</h3>
+                        <p>Holdings of foreign currencies and gold by the central bank to maintain exchange rate stability. Iraq maintains significant foreign reserves from oil exports.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Banking Sector</h3>
+                        <p>The network of commercial and state-owned banks that facilitate financial transactions and credit. Iraq's banking sector is undergoing modernization and expansion.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Capital Markets</h3>
+                        <p>Financial markets where long-term debt and equity securities are traded. Iraq's capital markets are developing to support private sector growth.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Islamic Banking</h3>
+                        <p>Banking operations that comply with Islamic law (Sharia), including profit-sharing and interest-free transactions. Islamic banking is growing in Iraq.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Financial Inclusion</h3>
+                        <p>Efforts to provide access to financial services to all segments of society. Iraq is working to expand banking services to underserved populations.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-category">
+                    <h2>Development Terms</h2>
+                    <div class="term-card">
+                        <h3>Economic Diversification</h3>
+                        <p>The process of expanding the economy beyond oil to include other sectors like agriculture and manufacturing. Iraq aims to reduce oil dependency through diversification.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Human Capital</h3>
+                        <p>The knowledge, skills, and health of the workforce that contribute to economic productivity. Iraq invests in education and training to develop human capital.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Digital Economy</h3>
+                        <p>Economic activities based on digital technologies, including e-commerce and digital services. Iraq is developing its digital infrastructure and services.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Sustainable Development</h3>
+                        <p>Economic growth that meets present needs while preserving resources for future generations. Iraq incorporates sustainability into development plans.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Private Sector Development</h3>
+                        <p>Policies and programs to strengthen private businesses and entrepreneurship. Iraq is implementing reforms to support private sector growth.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Regional Integration</h3>
+                        <p>Efforts to strengthen economic ties with neighboring countries and regional organizations. Iraq participates in various regional economic initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glossary-navigation">
+            <h2>Quick Navigation</h2>
+            <div class="nav-buttons">
+                <button class="btn" onclick="scrollToCategory('Macroeconomic Indicators')">Macroeconomic Terms</button>
+                <button class="btn" onclick="scrollToCategory('Oil Sector Terms')">Oil Sector Terms</button>
+                <button class="btn" onclick="scrollToCategory('Trade Terms')">Trade Terms</button>
+                <button class="btn" onclick="scrollToCategory('Social Indicators')">Social Indicators</button>
+                <button class="btn" onclick="scrollToCategory('Infrastructure Terms')">Infrastructure Terms</button>
+                <button class="btn" onclick="scrollToCategory('Policy Terms')">Policy Terms</button>
+                <button class="btn" onclick="scrollToCategory('Financial Terms')">Financial Terms</button>
+                <button class="btn" onclick="scrollToCategory('Development Terms')">Development Terms</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function searchGlossary() {
+            const input = document.getElementById('glossarySearch');
+            const filter = input.value.toLowerCase();
+            const terms = document.getElementsByClassName('term-card');
+            const categories = document.getElementsByClassName('glossary-category');
+
+            for (let category of categories) {
+                let hasVisibleTerms = false;
+                const categoryTerms = category.getElementsByClassName('term-card');
+
+                for (let term of categoryTerms) {
+                    const title = term.getElementsByTagName('h3')[0];
+                    const description = term.getElementsByTagName('p')[0];
+                    const titleText = title.textContent || title.innerText;
+                    const descriptionText = description.textContent || description.innerText;
+
+                    if (titleText.toLowerCase().indexOf(filter) > -1 || 
+                        descriptionText.toLowerCase().indexOf(filter) > -1) {
+                        term.style.display = '';
+                        hasVisibleTerms = true;
+                    } else {
+                        term.style.display = 'none';
+                    }
+                }
+
+                // Show/hide category based on whether it has visible terms
+                category.style.display = hasVisibleTerms ? '' : 'none';
+            }
+        }
+
+        function scrollToCategory(categoryName) {
+            const categories = document.getElementsByClassName('glossary-category');
+            for (let category of categories) {
+                const heading = category.getElementsByTagName('h2')[0];
+                if (heading.textContent === categoryName) {
+                    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    break;
+                }
+            }
+        }
+    </script>
+    <script src="chatbot.js"></script>
+</body>
+</html> 

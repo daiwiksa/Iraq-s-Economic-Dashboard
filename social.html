@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Indicators - Iraq's Economic Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="iraq flag.mp4" type="video/mp4">
+    </video>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html" class="active"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>Social Indicators Analysis</h1>
+            <p class="subtitle">Comprehensive Analysis of Iraq's Social Development (2015-2023)</p>
+        </header>
+
+        <section class="analysis-summary">
+            <h2>Key Findings</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Education Progress</h3>
+                    <p>Literacy rates have improved significantly, though regional disparities persist. Access to education has expanded, but quality and infrastructure challenges remain.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Healthcare Access</h3>
+                    <p>Healthcare infrastructure has improved, with better access to basic services. However, specialized care and rural healthcare access remain areas of concern.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Poverty & Inequality</h3>
+                    <p>Poverty rates have decreased but remain significant, particularly in rural areas. Income inequality continues to be a challenge, affecting social cohesion.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-charts">
+            <h2>Interactive Analysis</h2>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Education Indicators (2015-2023)</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleEducationChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadEducationData()">Download Data</button>
+                        <select id="educationChartMetric" onchange="updateEducationChart()">
+                            <option value="literacy">Literacy Rate (%)</option>
+                            <option value="enrollment">School Enrollment (%)</option>
+                            <option value="completion">Completion Rate (%)</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="educationChart"></canvas>
+                <div class="analysis">
+                    <h3>Education Analysis</h3>
+                    <p>Literacy rates have shown steady improvement, with significant gains in female literacy. School enrollment rates have increased, though completion rates remain a challenge.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Healthcare Access</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleHealthcareChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadHealthcareData()">Download Data</button>
+                    </div>
+                </div>
+                <canvas id="healthcareChart"></canvas>
+                <div class="analysis">
+                    <h3>Healthcare Analysis</h3>
+                    <p>Access to basic healthcare services has improved, with increased hospital beds and medical staff. However, specialized care and rural healthcare access need further development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparative-analysis">
+            <h2>Regional Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>Development Context</h3>
+                    <p>Iraq's social indicators show improvement but lag behind regional averages in some areas. Investment in education and healthcare infrastructure is crucial for development.</p>
+                </div>
+                <div class="comparison-card">
+                    <h3>Policy Implications</h3>
+                    <p>Targeted interventions are needed to address regional disparities and improve access to quality education and healthcare services.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-sources">
+            <h2>Data Sources & Methodology</h2>
+            <div class="sources-content">
+                <p>Data is sourced from:</p>
+                <ul>
+                    <li>Iraqi Ministry of Education</li>
+                    <li>Iraqi Ministry of Health</li>
+                    <li>World Bank Development Indicators</li>
+                    <li>United Nations Development Programme (UNDP)</li>
+                </ul>
+                <p>All figures are based on official statistics and surveys.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="chatbot.js"></script>
+
+    <script>
+        // Education Chart Configuration
+        const educationChartCtx = document.getElementById('educationChart').getContext('2d');
+        const educationChart = new Chart(educationChartCtx, {
+            type: 'line',
+            data: {
+                labels: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+                datasets: [{
+                    label: 'Literacy Rate (%)',
+                    data: [78.5, 80.2, 82.5, 84.3, 85.8, 86.2, 86.8, 87.2, 87.5],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Literacy Rate (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Healthcare Chart Configuration
+        const healthcareChartCtx = document.getElementById('healthcareChart').getContext('2d');
+        const healthcareChart = new Chart(healthcareChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Urban Hospitals', 'Rural Clinics', 'Primary Care', 'Specialized Care', 'Emergency Services'],
+                datasets: [{
+                    data: [40, 25, 20, 10, 5],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // Chart Controls
+        function toggleEducationChartType() {
+            const newType = educationChart.config.type === 'line' ? 'bar' : 'line';
+            educationChart.config.type = newType;
+            educationChart.update();
+        }
+
+        function toggleHealthcareChartType() {
+            const newType = healthcareChart.config.type === 'pie' ? 'doughnut' : 'pie';
+            healthcareChart.config.type = newType;
+            healthcareChart.update();
+        }
+
+        function updateEducationChart() {
+            const metric = document.getElementById('educationChartMetric').value;
+            let data, label, yAxisLabel;
+
+            switch(metric) {
+                case 'literacy':
+                    data = [78.5, 80.2, 82.5, 84.3, 85.8, 86.2, 86.8, 87.2, 87.5];
+                    label = 'Literacy Rate (%)';
+                    yAxisLabel = 'Literacy Rate (%)';
+                    break;
+                case 'enrollment':
+                    data = [85.2, 86.5, 87.8, 88.9, 89.5, 90.2, 90.8, 91.2, 91.5];
+                    label = 'School Enrollment (%)';
+                    yAxisLabel = 'Enrollment Rate (%)';
+                    break;
+                case 'completion':
+                    data = [65.8, 67.2, 68.5, 69.8, 70.5, 71.2, 71.8, 72.2, 72.5];
+                    label = 'Completion Rate (%)';
+                    yAxisLabel = 'Completion Rate (%)';
+                    break;
+            }
+
+            educationChart.data.datasets[0].data = data;
+            educationChart.data.datasets[0].label = label;
+            educationChart.options.scales.y.title.text = yAxisLabel;
+            educationChart.update();
+        }
+
+        function downloadEducationData() {
+            const data = educationChart.data.datasets[0].data;
+            const labels = educationChart.data.labels;
+            let csv = 'Year,' + educationChart.data.datasets[0].label + '\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-education-data.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function downloadHealthcareData() {
+            const data = healthcareChart.data.datasets[0].data;
+            const labels = healthcareChart.data.labels;
+            let csv = 'Category,Percentage\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}%\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-healthcare-data.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html> 

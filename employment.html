@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Analysis - Iraq's Economic Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="iraq flag.mp4" type="video/mp4">
+    </video>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html" class="active"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>Employment Analysis</h1>
+            <p class="subtitle">Comprehensive Analysis of Iraq's Labor Market (2015-2023)</p>
+        </header>
+
+        <section class="analysis-summary">
+            <h2>Key Findings</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Employment Overview</h3>
+                    <p>Iraq's labor market faces significant challenges with high unemployment rates, particularly among youth and women. The public sector remains the largest employer, while private sector growth has been limited.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Labor Force Trends</h3>
+                    <p>The labor force participation rate has shown gradual improvement, but structural issues persist. Youth unemployment remains a critical concern, with rates significantly higher than the national average.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Future Outlook</h3>
+                    <p>Economic reforms and private sector development are essential for job creation. Investment in education and vocational training is crucial for improving employability.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-charts">
+            <h2>Interactive Analysis</h2>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Unemployment Trends (2015-2023)</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleUnemploymentChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadUnemploymentData()">Download Data</button>
+                        <select id="unemploymentChartMetric" onchange="updateUnemploymentChart()">
+                            <option value="overall">Overall Rate</option>
+                            <option value="youth">Youth Rate</option>
+                            <option value="female">Female Rate</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="unemploymentChart"></canvas>
+                <div class="analysis">
+                    <h3>Unemployment Analysis</h3>
+                    <p>The unemployment rate peaked during the COVID-19 pandemic and has shown gradual improvement since. However, structural unemployment remains a significant challenge, particularly among youth and women.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Employment by Sector</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleSectorChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadSectorData()">Download Data</button>
+                    </div>
+                </div>
+                <canvas id="sectorChart"></canvas>
+                <div class="analysis">
+                    <h3>Sector Analysis</h3>
+                    <p>The public sector continues to dominate employment, while private sector growth has been limited. Agriculture and industry sectors show potential for job creation but require significant investment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparative-analysis">
+            <h2>Regional Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>Middle East Context</h3>
+                    <p>Iraq's unemployment rates are higher than regional averages, reflecting both structural challenges and the impact of political and economic instability.</p>
+                </div>
+                <div class="comparison-card">
+                    <h3>Policy Implications</h3>
+                    <p>Comprehensive labor market reforms are needed to address youth unemployment and promote private sector growth. Investment in education and skills development is crucial.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-sources">
+            <h2>Data Sources & Methodology</h2>
+            <div class="sources-content">
+                <p>Data is sourced from:</p>
+                <ul>
+                    <li>Iraqi Ministry of Labor and Social Affairs</li>
+                    <li>World Bank Labor Market Indicators</li>
+                    <li>International Labor Organization (ILO) Reports</li>
+                    <li>Central Statistical Organization of Iraq</li>
+                </ul>
+                <p>All figures are based on official statistics and surveys.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="chatbot.js"></script>
+
+    <script>
+        // Unemployment Chart Configuration
+        const unemploymentChartCtx = document.getElementById('unemploymentChart').getContext('2d');
+        const unemploymentChart = new Chart(unemploymentChartCtx, {
+            type: 'line',
+            data: {
+                labels: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+                datasets: [{
+                    label: 'Overall Unemployment Rate (%)',
+                    data: [12.5, 13.2, 14.8, 15.6, 16.2, 18.5, 17.8, 16.5, 15.6],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Unemployment Rate (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Sector Chart Configuration
+        const sectorChartCtx = document.getElementById('sectorChart').getContext('2d');
+        const sectorChart = new Chart(sectorChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Public Sector', 'Private Sector', 'Agriculture', 'Industry', 'Services'],
+                datasets: [{
+                    data: [45, 25, 15, 10, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // Chart Controls
+        function toggleUnemploymentChartType() {
+            const newType = unemploymentChart.config.type === 'line' ? 'bar' : 'line';
+            unemploymentChart.config.type = newType;
+            unemploymentChart.update();
+        }
+
+        function toggleSectorChartType() {
+            const newType = sectorChart.config.type === 'pie' ? 'doughnut' : 'pie';
+            sectorChart.config.type = newType;
+            sectorChart.update();
+        }
+
+        function updateUnemploymentChart() {
+            const metric = document.getElementById('unemploymentChartMetric').value;
+            let data, label, yAxisLabel;
+
+            switch(metric) {
+                case 'overall':
+                    data = [12.5, 13.2, 14.8, 15.6, 16.2, 18.5, 17.8, 16.5, 15.6];
+                    label = 'Overall Unemployment Rate (%)';
+                    yAxisLabel = 'Unemployment Rate (%)';
+                    break;
+                case 'youth':
+                    data = [25.3, 26.8, 28.5, 29.2, 30.5, 32.8, 31.5, 30.2, 29.5];
+                    label = 'Youth Unemployment Rate (%)';
+                    yAxisLabel = 'Youth Unemployment Rate (%)';
+                    break;
+                case 'female':
+                    data = [18.5, 19.2, 20.5, 21.8, 22.5, 24.8, 23.5, 22.8, 22.2];
+                    label = 'Female Unemployment Rate (%)';
+                    yAxisLabel = 'Female Unemployment Rate (%)';
+                    break;
+            }
+
+            unemploymentChart.data.datasets[0].data = data;
+            unemploymentChart.data.datasets[0].label = label;
+            unemploymentChart.options.scales.y.title.text = yAxisLabel;
+            unemploymentChart.update();
+        }
+
+        function downloadUnemploymentData() {
+            const data = unemploymentChart.data.datasets[0].data;
+            const labels = unemploymentChart.data.labels;
+            let csv = 'Year,' + unemploymentChart.data.datasets[0].label + '\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-unemployment-data.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function downloadSectorData() {
+            const data = sectorChart.data.datasets[0].data;
+            const labels = sectorChart.data.labels;
+            let csv = 'Sector,Percentage\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}%\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-employment-sectors.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iraq Economic Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>Iraq's Economic Dashboard</h1>
+            <p class="subtitle">Comprehensive Analysis of Iraq's Economy (2015-2023)</p>
+        </header>
+
+        <section class="key-highlights">
+            <h2>Key Economic Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>GDP Growth</h3>
+                    <p>Peak: 13.8% (2016)</p>
+                    <p>Lowest: -15.7% (2020)</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-oil-can"></i>
+                    <h3>Oil Production</h3>
+                    <p>Major export driver</p>
+                    <p>Global market influence</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Population Impact</h3>
+                    <p>Growing workforce</p>
+                    <p>Urban development</p>
+                </div>
+                <div class="highlight-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Trade</h3>
+                    <p>Strategic location</p>
+                    <p>International partnerships</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-stats">
+            <h2>Quick Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Current GDP</h3>
+                    <p>$270.9B</p>
+                    <span class="trend positive">+2.8% from 2022</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Unemployment Rate</h3>
+                    <p>15.6%</p>
+                    <span class="trend negative">+0.8% from 2022</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Inflation Rate</h3>
+                    <p>5.0%</p>
+                    <span class="trend neutral">No change from 2022</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Literacy Rate</h3>
+                    <p>87%</p>
+                    <span class="trend positive">+1% from 2022</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-chart">
+            <h2>Featured Analysis: GDP Trends</h2>
+            <div class="chart-container">
+                <canvas id="featuredGDPChart"></canvas>
+                <div class="analysis">
+                    <h3>GDP Overview</h3>
+                    <p>Iraq's GDP has shown significant volatility over the past decade, with major impacts from global oil prices, political stability, and the COVID-19 pandemic. The economy has demonstrated resilience with strong recovery periods, particularly in 2021-2022.</p>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadChartData()">Download Data</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-updates">
+            <h2>Latest Economic Updates</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <h3>Oil Production Milestone</h3>
+                    <p>Iraq reaches new oil production targets, strengthening economic recovery...</p>
+                    <a href="news.html?article=oil" class="read-more">Read More</a>
+                </article>
+                <article class="news-card">
+                    <h3>Investment Opportunities</h3>
+                    <p>New infrastructure projects announced to boost economic growth...</p>
+                    <a href="news.html?article=investment" class="read-more">Read More</a>
+                </article>
+                <article class="news-card">
+                    <h3>Trade Agreements</h3>
+                    <p>New international trade partnerships established...</p>
+                    <a href="news.html?article=trade" class="read-more">Read More</a>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Featured Chart Configuration
+        const featuredChartCtx = document.getElementById('featuredGDPChart').getContext('2d');
+        const featuredChart = new Chart(featuredChartCtx, {
+            type: 'line',
+            data: {
+                labels: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+                datasets: [{
+                    label: 'GDP (billion USD)',
+                    data: [168.6, 175.1, 197.7, 224.2, 234.1, 167.2, 207.9, 264.2, 270.9],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'GDP (billion USD)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart Controls
+        function toggleChartType() {
+            const newType = featuredChart.config.type === 'line' ? 'bar' : 'line';
+            featuredChart.config.type = newType;
+            featuredChart.update();
+        }
+
+        function downloadChartData() {
+            const data = featuredChart.data.datasets[0].data;
+            const labels = featuredChart.data.labels;
+            let csv = 'Year,GDP (billion USD)\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-gdp-data.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+    <script
+    type="module"
+    src="https://agent.d-id.com/v1/index.js"
+    data-name="did-agent"
+    data-mode="fabio"
+    data-client-key="Z29vZ2xlLW9hdXRoMnwxMDYwNzczMzU2NjY2NzU3OTEwOTQ6amN2Q1VMMmVQX04tYmJxWjFGUWlh"
+    data-agent-id="agt_q0vpBpHa"
+    data-monitor="true">
+    </script>
+</body>
+</html>

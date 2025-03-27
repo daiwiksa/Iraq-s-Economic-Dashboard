@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details - Iraq's Economic Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="iraq flag.mp4" type="video/mp4">
+    </video>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>Economic News</h1>
+            <p class="subtitle">Latest Updates on Iraq's Economy</p>
+        </header>
+
+        <section class="news-details">
+            <article class="news-article">
+                <h2 id="article-title">Oil Production Milestone</h2>
+                <div class="article-meta">
+                    <span class="date">March 15, 2024</span>
+                    <span class="category">Oil Sector</span>
+                </div>
+                <div class="article-content">
+                    <p>Iraq has reached a significant milestone in oil production, with daily output exceeding 4.7 million barrels per day (mbpd) in recent months. This achievement marks a strong recovery from the pandemic-induced slowdown and demonstrates the country's growing capacity in the energy sector.</p>
+                    
+                    <h3>Key Developments</h3>
+                    <ul>
+                        <li>Production capacity increased by 15% compared to 2022</li>
+                        <li>New infrastructure projects completed in southern fields</li>
+                        <li>Enhanced export capabilities through modernized terminals</li>
+                    </ul>
+
+                    <h3>Economic Impact</h3>
+                    <p>The increased production has contributed significantly to government revenue, with oil exports generating over $98 billion in 2023. This has supported economic recovery and enabled increased investment in public services and infrastructure development.</p>
+
+                    <h3>Future Outlook</h3>
+                    <p>Iraq aims to further increase production capacity to 5 million bpd by 2025, supported by ongoing infrastructure improvements and international partnerships. The government is also focusing on diversifying export markets and developing downstream industries.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="related-news">
+            <h2>Related Articles</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <h3>Investment Opportunities</h3>
+                    <p>New infrastructure projects announced to boost economic growth...</p>
+                    <a href="news.html?article=investment" class="read-more">Read More</a>
+                </article>
+                <article class="news-card">
+                    <h3>Trade Agreements</h3>
+                    <p>New international trade partnerships established...</p>
+                    <a href="news.html?article=trade" class="read-more">Read More</a>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Get article ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('article');
+
+        // Article content database
+        const articles = {
+            'oil': {
+                title: 'Oil Production Milestone',
+                date: 'March 15, 2024',
+                category: 'Oil Sector',
+                content: `Iraq has reached a significant milestone in oil production, with daily output exceeding 4.7 million barrels per day (mbpd) in recent months. This achievement marks a strong recovery from the pandemic-induced slowdown and demonstrates the country's growing capacity in the energy sector.
+
+                Key Developments:
+                • Production capacity increased by 15% compared to 2022
+                • New infrastructure projects completed in southern fields
+                • Enhanced export capabilities through modernized terminals
+
+                Economic Impact:
+                The increased production has contributed significantly to government revenue, with oil exports generating over $98 billion in 2023. This has supported economic recovery and enabled increased investment in public services and infrastructure development.
+
+                Future Outlook:
+                Iraq aims to further increase production capacity to 5 million bpd by 2025, supported by ongoing infrastructure improvements and international partnerships. The government is also focusing on diversifying export markets and developing downstream industries.`
+            },
+            'investment': {
+                title: 'Investment Opportunities',
+                date: 'March 10, 2024',
+                category: 'Investment',
+                content: `The Iraqi government has announced a series of new infrastructure projects aimed at boosting economic growth and creating employment opportunities. These initiatives focus on key sectors including energy, transportation, and urban development.
+
+                Key Projects:
+                • Modernization of major ports and transportation hubs
+                • Development of industrial zones in strategic locations
+                • Expansion of renewable energy infrastructure
+
+                Investment Climate:
+                Recent reforms have improved the business environment, with streamlined procedures for foreign investment and enhanced legal protections. The government is actively seeking partnerships with international investors and development organizations.
+
+                Economic Benefits:
+                These projects are expected to create thousands of jobs and contribute significantly to GDP growth. The focus on sustainable infrastructure development aligns with Iraq's long-term economic goals.`
+            },
+            'trade': {
+                title: 'Trade Agreements',
+                date: 'March 5, 2024',
+                category: 'Trade',
+                content: `Iraq has established new international trade partnerships, expanding its economic relations beyond traditional markets. These agreements focus on diversifying trade relations and reducing dependency on oil exports.
+
+                New Partnerships:
+                • Strategic trade agreements with Asian economies
+                • Enhanced cooperation with European Union member states
+                • Development of regional trade corridors
+
+                Trade Diversification:
+                Efforts to promote non-oil exports have shown promising results, with growth in agricultural and manufactured goods. The government is implementing programs to support local industries and improve export competitiveness.
+
+                Future Prospects:
+                These agreements are expected to boost trade volumes and create new opportunities for Iraqi businesses. The focus on economic diversification aligns with long-term development goals.`
+            }
+        };
+
+        // Update article content based on URL parameter
+        if (articleId && articles[articleId]) {
+            const article = articles[articleId];
+            document.getElementById('article-title').textContent = article.title;
+            document.querySelector('.article-meta .date').textContent = article.date;
+            document.querySelector('.article-meta .category').textContent = article.category;
+            document.querySelector('.article-content').innerHTML = article.content.replace(/\n/g, '<br>');
+        }
+    </script>
+</body>
+</html> 

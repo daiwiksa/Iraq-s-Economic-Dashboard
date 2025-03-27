@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDP & Growth Analysis - Iraq's Economic Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="iraq flag.mp4" type="video/mp4">
+    </video>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html" class="active"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>GDP & Economic Growth Analysis</h1>
+            <p class="subtitle">Comprehensive Analysis of Iraq's Economic Performance (2015-2023)</p>
+        </header>
+
+        <section class="analysis-summary">
+            <h2>Key Findings</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>GDP Overview</h3>
+                    <p>Iraq's GDP has shown significant volatility, primarily influenced by oil prices and global economic conditions. The economy experienced major contractions during the COVID-19 pandemic but has shown resilience in recovery.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Growth Patterns</h3>
+                    <p>Economic growth has been uneven, with periods of strong expansion followed by contractions. The oil sector remains the primary driver of economic activity.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Future Outlook</h3>
+                    <p>While challenges persist, Iraq's economy shows potential for sustainable growth through diversification and infrastructure development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-charts">
+            <h2>Interactive Analysis</h2>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>GDP Trends (2015-2023)</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleGDPChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadGDPData()">Download Data</button>
+                        <select id="gdpChartMetric" onchange="updateGDPChart()">
+                            <option value="nominal">Nominal GDP</option>
+                            <option value="perCapita">GDP per Capita</option>
+                            <option value="growth">GDP Growth Rate</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="gdpChart"></canvas>
+                <div class="analysis">
+                    <h3>GDP Analysis</h3>
+                    <p>The major dip in 2020 (from $234.1B to $167.2B) was primarily caused by the COVID-19 pandemic and global oil price collapse. The subsequent recovery in 2021-2023 was driven by rising oil prices and improved economic stability.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>GDP Composition</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleCompositionChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadCompositionData()">Download Data</button>
+                    </div>
+                </div>
+                <canvas id="gdpCompositionChart"></canvas>
+                <div class="analysis">
+                    <h3>GDP Composition Analysis</h3>
+                    <p>Iraq's economy remains heavily dependent on the oil sector, which accounts for approximately 60% of GDP. Efforts to diversify the economy have shown limited success, with the service sector showing some growth potential.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparative-analysis">
+            <h2>Regional Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>Middle East Context</h3>
+                    <p>Iraq's GDP growth has been more volatile than regional peers, primarily due to its heavy reliance on oil exports and political instability.</p>
+                </div>
+                <div class="comparison-card">
+                    <h3>Global Position</h3>
+                    <p>Despite challenges, Iraq maintains a significant position in global oil markets, with potential for increased economic influence through strategic reforms.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-sources">
+            <h2>Data Sources & Methodology</h2>
+            <div class="sources-content">
+                <p>Data is sourced from:</p>
+                <ul>
+                    <li>World Bank Economic Indicators</li>
+                    <li>International Monetary Fund (IMF) Reports</li>
+                    <li>Iraqi Ministry of Planning</li>
+                    <li>Central Bank of Iraq</li>
+                </ul>
+                <p>All figures are adjusted for inflation and presented in constant 2015 USD.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="chatbot.js"></script>
+
+    <script>
+        // GDP Chart Configuration
+        const gdpChartCtx = document.getElementById('gdpChart').getContext('2d');
+        const gdpChart = new Chart(gdpChartCtx, {
+            type: 'line',
+            data: {
+                labels: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+                datasets: [{
+                    label: 'GDP (billion USD)',
+                    data: [168.6, 175.1, 197.7, 224.2, 234.1, 167.2, 207.9, 264.2, 270.9],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'GDP (billion USD)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // GDP Composition Chart
+        const compositionChartCtx = document.getElementById('gdpCompositionChart').getContext('2d');
+        const compositionChart = new Chart(compositionChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Oil Sector', 'Services', 'Agriculture', 'Industry', 'Other'],
+                datasets: [{
+                    data: [60, 20, 5, 10, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // Chart Controls
+        function toggleGDPChartType() {
+            const newType = gdpChart.config.type === 'line' ? 'bar' : 'line';
+            gdpChart.config.type = newType;
+            gdpChart.update();
+        }
+
+        function toggleCompositionChartType() {
+            const newType = compositionChart.config.type === 'pie' ? 'doughnut' : 'pie';
+            compositionChart.config.type = newType;
+            compositionChart.update();
+        }
+
+        function updateGDPChart() {
+            const metric = document.getElementById('gdpChartMetric').value;
+            let data, label, yAxisLabel;
+
+            switch(metric) {
+                case 'nominal':
+                    data = [168.6, 175.1, 197.7, 224.2, 234.1, 167.2, 207.9, 264.2, 270.9];
+                    label = 'GDP (billion USD)';
+                    yAxisLabel = 'GDP (billion USD)';
+                    break;
+                case 'perCapita':
+                    data = [4903.82, 4932.93, 4500.00, 5774.50, 5937.20, 4130.50, 5018.50, 6213.00, 4136.20];
+                    label = 'GDP per Capita (USD)';
+                    yAxisLabel = 'GDP per Capita (USD)';
+                    break;
+                case 'growth':
+                    data = [2.5, 13.8, -2.5, 6.2, 4.5, -15.7, 2.8, 8.9, -2.9];
+                    label = 'GDP Growth (%)';
+                    yAxisLabel = 'Growth Rate (%)';
+                    break;
+            }
+
+            gdpChart.data.datasets[0].data = data;
+            gdpChart.data.datasets[0].label = label;
+            gdpChart.options.scales.y.title.text = yAxisLabel;
+            gdpChart.update();
+        }
+
+        function downloadGDPData() {
+            const data = gdpChart.data.datasets[0].data;
+            const labels = gdpChart.data.labels;
+            let csv = 'Year,' + gdpChart.data.datasets[0].label + '\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-gdp-data.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function downloadCompositionData() {
+            const data = compositionChart.data.datasets[0].data;
+            const labels = compositionChart.data.labels;
+            let csv = 'Sector,Percentage\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}%\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-gdp-composition.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html> 

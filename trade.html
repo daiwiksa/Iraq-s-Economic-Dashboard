@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade & Oil Analysis - Iraq's Economic Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="iraq flag.mp4" type="video/mp4">
+    </video>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Iraq Economic Dashboard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="gdp.html"><i class="fas fa-dollar-sign"></i> GDP & Growth</a></li>
+                <li><a href="employment.html"><i class="fas fa-briefcase"></i> Employment</a></li>
+                <li><a href="trade.html" class="active"><i class="fas fa-globe"></i> Trade & Oil</a></li>
+                <li><a href="social.html"><i class="fas fa-users"></i> Social Indicators</a></li>
+                <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content-overlay">
+        <header class="main-header">
+            <h1>Trade & Oil Analysis</h1>
+            <p class="subtitle">Comprehensive Analysis of Iraq's Trade and Oil Sector (2015-2023)</p>
+        </header>
+
+        <section class="analysis-summary">
+            <h2>Key Findings</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Oil Sector Overview</h3>
+                    <p>Iraq remains one of the world's largest oil producers, with oil exports constituting the majority of government revenue. Production capacity has increased significantly, though market volatility continues to impact revenues.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Trade Balance</h3>
+                    <p>The country maintains a positive trade balance, driven by oil exports. However, non-oil exports remain limited, highlighting the need for economic diversification.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Future Outlook</h3>
+                    <p>Investment in oil infrastructure and diversification of export markets are key priorities. Development of non-oil sectors is essential for sustainable economic growth.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="interactive-charts">
+            <h2>Interactive Analysis</h2>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Oil Production & Exports (2015-2023)</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleOilChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadOilData()">Download Data</button>
+                        <select id="oilChartMetric" onchange="updateOilChart()">
+                            <option value="production">Production (mbpd)</option>
+                            <option value="exports">Exports (mbpd)</option>
+                            <option value="revenue">Revenue (billion USD)</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="oilChart"></canvas>
+                <div class="analysis">
+                    <h3>Oil Sector Analysis</h3>
+                    <p>Oil production has shown steady growth, reaching record levels in recent years. Export volumes have increased in parallel, though revenue remains sensitive to global oil prices.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Trade Composition</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleTradeChartType()">Switch View</button>
+                        <button class="btn" onclick="downloadTradeData()">Download Data</button>
+                    </div>
+                </div>
+                <canvas id="tradeChart"></canvas>
+                <div class="analysis">
+                    <h3>Trade Analysis</h3>
+                    <p>Oil exports dominate Iraq's trade composition, while imports are primarily focused on consumer goods and industrial equipment. Non-oil exports show potential for growth but require significant development.</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div class="chart-header">
+                    <h3>Trade Routes & Oil Infrastructure</h3>
+                    <div class="chart-controls">
+                        <button class="btn" onclick="toggleMapLayer()">Toggle Layer</button>
+                    </div>
+                </div>
+                <div class="map-description">
+                    <p>This interactive map showcases Iraq's key oil infrastructure and trade routes:</p>
+                    <ul>
+                        <li><strong>Oil Fields:</strong> Major production sites including Rumaila, Kirkuk, West Qurna, and Majnoon fields</li>
+                        <li><strong>Export Terminals:</strong> Key ports in the Persian Gulf region for oil exports</li>
+                        <li><strong>Trade Routes:</strong> Major shipping lanes connecting Iraq to global markets</li>
+                    </ul>
+                    <p>Use the toggle button to switch between viewing oil fields and export terminals. Click on any marker or route for detailed information.</p>
+                </div>
+                <div id="tradeMap" class="map"></div>
+                <div class="analysis">
+                    <h3>Map Analysis</h3>
+                    <p>Iraq's major oil fields and export infrastructure are concentrated in the southern region, with key export routes through the Persian Gulf. The country's trade routes connect to major global markets through multiple ports and pipelines.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparative-analysis">
+            <h2>Regional Comparison</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>OPEC Context</h3>
+                    <p>Iraq is a key member of OPEC, with significant influence on global oil markets. Production levels and export capacity continue to expand, positioning Iraq as a major player in the energy sector.</p>
+                </div>
+                <div class="comparison-card">
+                    <h3>Trade Partnerships</h3>
+                    <p>Iraq maintains strong trade relationships with major economies, particularly in Asia. Efforts to diversify trade partners and reduce dependency on oil exports are ongoing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-sources">
+            <h2>Data Sources & Methodology</h2>
+            <div class="sources-content">
+                <p>Data is sourced from:</p>
+                <ul>
+                    <li>Iraqi Ministry of Oil</li>
+                    <li>Organization of the Petroleum Exporting Countries (OPEC)</li>
+                    <li>World Trade Organization (WTO) Statistics</li>
+                    <li>Central Bank of Iraq</li>
+                </ul>
+                <p>All figures are based on official statistics and market reports.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="chatbot.js"></script>
+
+    <script>
+        // Initialize map
+        const map = L.map('tradeMap').setView([33.3152, 44.3661], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add oil fields
+        const oilFields = [
+            { name: 'Rumaila', coords: [30.5, 47.4] },
+            { name: 'Kirkuk', coords: [35.4, 43.8] },
+            { name: 'West Qurna', coords: [30.2, 47.3] },
+            { name: 'Majnoon', coords: [31.5, 47.4] }
+        ];
+
+        // Add export terminals
+        const exportTerminals = [
+            { name: 'Basra Oil Terminal', coords: [29.7, 48.8] },
+            { name: 'Khor Al-Amaya', coords: [29.7, 48.6] }
+        ];
+
+        // Add markers and popups
+        oilFields.forEach(field => {
+            L.marker(field.coords)
+                .bindPopup(`<b>${field.name}</b><br>Major Oil Field`)
+                .addTo(map);
+        });
+
+        exportTerminals.forEach(terminal => {
+            L.marker(terminal.coords)
+                .bindPopup(`<b>${terminal.name}</b><br>Export Terminal`)
+                .addTo(map);
+        });
+
+        // Add trade routes
+        const tradeRoutes = [
+            { name: 'Persian Gulf Route', coords: [[29.7, 48.8], [25.3, 55.3]] },
+            { name: 'Mediterranean Route', coords: [[35.4, 43.8], [31.5, 34.5]] }
+        ];
+
+        tradeRoutes.forEach(route => {
+            L.polyline(route.coords, { color: 'blue', weight: 3 })
+                .bindPopup(`<b>${route.name}</b><br>Major Trade Route`)
+                .addTo(map);
+        });
+
+        let showOilFields = true;
+        function toggleMapLayer() {
+            const markers = document.querySelectorAll('.leaflet-marker-icon');
+            markers.forEach(marker => {
+                marker.style.display = showOilFields ? 'none' : 'block';
+            });
+            showOilFields = !showOilFields;
+        }
+
+        // Oil Chart Configuration
+        const oilChartCtx = document.getElementById('oilChart').getContext('2d');
+        const oilChart = new Chart(oilChartCtx, {
+            type: 'line',
+            data: {
+                labels: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
+                datasets: [{
+                    label: 'Oil Production (mbpd)',
+                    data: [3.5, 4.6, 4.7, 4.6, 4.8, 3.8, 4.1, 4.5, 4.7],
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Production (mbpd)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Trade Chart Configuration
+        const tradeChartCtx = document.getElementById('tradeChart').getContext('2d');
+        const tradeChart = new Chart(tradeChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Oil Exports', 'Non-Oil Exports', 'Consumer Goods Imports', 'Capital Goods Imports', 'Other Imports'],
+                datasets: [{
+                    data: [85, 5, 4, 3, 3],
+                    backgroundColor: [
+                        'rgba(255, 159, 64, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(153, 102, 255, 0.8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // Chart Controls
+        function toggleOilChartType() {
+            const newType = oilChart.config.type === 'line' ? 'bar' : 'line';
+            oilChart.config.type = newType;
+            oilChart.update();
+        }
+
+        function toggleTradeChartType() {
+            const newType = tradeChart.config.type === 'pie' ? 'doughnut' : 'pie';
+            tradeChart.config.type = newType;
+            tradeChart.update();
+        }
+
+        function updateOilChart() {
+            const metric = document.getElementById('oilChartMetric').value;
+            let data, label, yAxisLabel;
+
+            switch(metric) {
+                case 'production':
+                    data = [3.5, 4.6, 4.7, 4.6, 4.8, 3.8, 4.1, 4.5, 4.7];
+                    label = 'Oil Production (mbpd)';
+                    yAxisLabel = 'Production (mbpd)';
+                    break;
+                case 'exports':
+                    data = [3.2, 4.2, 4.3, 4.2, 4.4, 3.4, 3.8, 4.2, 4.4];
+                    label = 'Oil Exports (mbpd)';
+                    yAxisLabel = 'Exports (mbpd)';
+                    break;
+                case 'revenue':
+                    data = [45.2, 52.8, 61.5, 79.2, 76.8, 42.5, 75.6, 115.2, 98.4];
+                    label = 'Oil Revenue (billion USD)';
+                    yAxisLabel = 'Revenue (billion USD)';
+                    break;
+            }
+
+            oilChart.data.datasets[0].data = data;
+            oilChart.data.datasets[0].label = label;
+            oilChart.options.scales.y.title.text = yAxisLabel;
+            oilChart.update();
+        }
+
+        function downloadOilData() {
+            const data = oilChart.data.datasets[0].data;
+            const labels = oilChart.data.labels;
+            let csv = 'Year,' + oilChart.data.datasets[0].label + '\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-oil-data.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function downloadTradeData() {
+            const data = tradeChart.data.datasets[0].data;
+            const labels = tradeChart.data.labels;
+            let csv = 'Category,Percentage\n';
+            labels.forEach((label, i) => {
+                csv += `${label},${data[i]}%\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iraq-trade-composition.csv';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html> 
