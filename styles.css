@@ -1,6 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 /* Global Styles */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
@@ -40,7 +41,7 @@ body::before {
 
 /* Navigation */
 .main-nav {
-    background-color: rgba(44, 62, 80, 0.95);
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -99,7 +100,9 @@ body::before {
 /* Update content overlay for better contrast */
 .content-overlay {
     position: relative;
-    background-color: rgba(248, 249, 250, 0.95);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0,0,0,0.05);
     padding: 20px;
     border-radius: 15px;
     margin: 20px auto;
@@ -134,21 +137,22 @@ body::before {
 }
 
 .highlight-card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .highlight-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .highlight-card i {
     font-size: 2.5em;
-    color: #3498db;
+    color: #1e90ff;
     margin-bottom: 15px;
 }
 
@@ -166,11 +170,16 @@ body::before {
 }
 
 .stat-card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .stat-card h3 {
@@ -221,17 +230,19 @@ body::before {
 }
 
 .btn {
-    padding: 8px 16px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
-    background-color: #3498db;
-    color: white;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #1e90ff, #00aaff);
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background 0.3s, transform 0.3s;
 }
 
 .btn:hover {
-    background-color: #2980b9;
+    background: linear-gradient(135deg, #1c7ed6, #0096c7);
+    transform: translateY(-2px);
 }
 
 /* News Updates */
