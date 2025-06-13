@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     appendMessage('user', text);
     input.value = '';
     try {
+      const apiKey = window.OPENAI_API_KEY || 'YOUR_OPENAI_API_KEY';
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+          'Authorization': 'Bearer ' + apiKey
         },
         body: JSON.stringify({
           model: 'gpt-3.5-turbo',
