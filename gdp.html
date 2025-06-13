@@ -122,8 +122,6 @@
         </section>
     </div>
 
-    <script src="chatbot.js"></script>
-
     <script>
         // GDP Chart Configuration
         const gdpChartCtx = document.getElementById('gdpChart').getContext('2d');
@@ -262,5 +260,16 @@
             window.URL.revokeObjectURL(url);
         }
     </script>
+<div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Ask a question...">
+            <button onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
+    <div id="chatbot-toggle" class="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+    </div>
+    <script src="chat.js"></script>
 </body>
 </html> 

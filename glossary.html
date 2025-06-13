@@ -70,6 +70,10 @@
                         <h3>Real GDP Growth Rate</h3>
                         <p>The annual percentage change in GDP adjusted for inflation. This measure provides a more accurate picture of economic growth by accounting for price changes. Iraq's growth rate has been volatile due to oil price fluctuations and security challenges.</p>
                     </div>
+                    <div class="term-card">
+                        <h3>Purchasing Power Parity (PPP)</h3>
+                        <p>An economic theory that compares different countries' currencies through a "basket of goods" approach. PPP helps measure the relative value of the Iraqi Dinar by considering the cost of living and inflation rates.</p>
+                    </div>
                 </div>
 
                 <div class="glossary-category">
@@ -97,6 +101,10 @@
                     <div class="term-card">
                         <h3>Service Contracts</h3>
                         <p>Agreements between the Iraqi government and international oil companies for oil field development. These contracts provide technical expertise and investment while maintaining state ownership of resources.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Oil Refining Capacity</h3>
+                        <p>The maximum volume of crude oil that can be processed in Iraq's refineries. Increasing refining capacity helps meet domestic fuel demand and reduces reliance on imported refined products.</p>
                     </div>
                 </div>
 
@@ -126,6 +134,10 @@
                         <h3>Trade Agreements</h3>
                         <p>Bilateral or multilateral agreements that govern trade relations between countries. Iraq has signed various trade agreements to expand market access and attract investment.</p>
                     </div>
+                    <div class="term-card">
+                        <h3>Tariff Barriers</h3>
+                        <p>Duties imposed on imported goods to protect domestic industries and generate revenue. Reducing tariff barriers can encourage trade and lower costs for consumers.</p>
+                    </div>
                 </div>
 
                 <div class="glossary-category">
@@ -153,6 +165,10 @@
                     <div class="term-card">
                         <h3>Access to Basic Services</h3>
                         <p>The percentage of the population with access to essential services like electricity, water, and healthcare. Improving service delivery remains a priority for development.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Life Expectancy</h3>
+                        <p>The average number of years a person is expected to live based on current mortality trends. Improvements in healthcare and living standards can raise life expectancy in Iraq.</p>
                     </div>
                 </div>
 
@@ -182,6 +198,10 @@
                         <h3>Water Management</h3>
                         <p>Systems for water supply, treatment, and distribution. Water infrastructure is crucial for agriculture and industrial development.</p>
                     </div>
+                    <div class="term-card">
+                        <h3>Railway Revitalization</h3>
+                        <p>Projects aimed at restoring and expanding Iraq's rail network to improve connectivity and reduce transportation costs for goods and passengers.</p>
+                    </div>
                 </div>
 
                 <div class="glossary-category">
@@ -209,6 +229,10 @@
                     <div class="term-card">
                         <h3>Investment Policy</h3>
                         <p>Framework governing foreign and domestic investment, including incentives and regulations. Iraq has implemented reforms to attract more investment.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Subsidy Reform</h3>
+                        <p>Adjustments to government subsidies on goods and services, particularly fuel and food, to reduce fiscal burdens and encourage efficient resource use.</p>
                     </div>
                 </div>
 
@@ -238,6 +262,10 @@
                         <h3>Financial Inclusion</h3>
                         <p>Efforts to provide access to financial services to all segments of society. Iraq is working to expand banking services to underserved populations.</p>
                     </div>
+                    <div class="term-card">
+                        <h3>Microfinance</h3>
+                        <p>Provision of small loans and financial services to low-income individuals or small businesses lacking access to traditional banking. Microfinance initiatives support entrepreneurship and poverty reduction.</p>
+                    </div>
                 </div>
 
                 <div class="glossary-category">
@@ -266,6 +294,33 @@
                         <h3>Regional Integration</h3>
                         <p>Efforts to strengthen economic ties with neighboring countries and regional organizations. Iraq participates in various regional economic initiatives.</p>
                     </div>
+                    <div class="term-card">
+                        <h3>Green Economy</h3>
+                        <p>Economic development that prioritizes sustainability and environmental stewardship. Iraq is exploring green economy strategies to balance growth with resource conservation.</p>
+                    </div>
+                </div>
+                <div class="glossary-category">
+                    <h2>Environmental Terms</h2>
+                    <div class="term-card">
+                        <h3>Carbon Footprint</h3>
+                        <p>The total greenhouse gas emissions caused directly and indirectly by an individual, organization, event, or product. Reducing Iraq's carbon footprint is important for mitigating climate change.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Renewable Energy</h3>
+                        <p>Energy from sources that are naturally replenished, such as solar and wind power. Iraq is exploring renewable energy projects to diversify its energy mix.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Climate Resilience</h3>
+                        <p>The ability of communities and infrastructure to withstand and recover from climate-related shocks. Building climate resilience is vital for Iraq's sustainable development.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Water Stress</h3>
+                        <p>The ratio of water demand to available supply. High water stress in Iraq necessitates efficient water management and conservation strategies.</p>
+                    </div>
+                    <div class="term-card">
+                        <h3>Air Quality Index (AQI)</h3>
+                        <p>A measure used to communicate how polluted the air currently is or how polluted it is forecast to become. Monitoring AQI helps address public health risks in Iraq's urban areas.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -281,6 +336,7 @@
                 <button class="btn" onclick="scrollToCategory('Policy Terms')">Policy Terms</button>
                 <button class="btn" onclick="scrollToCategory('Financial Terms')">Financial Terms</button>
                 <button class="btn" onclick="scrollToCategory('Development Terms')">Development Terms</button>
+                <button class="btn" onclick="scrollToCategory('Environmental Terms')">Environmental Terms</button>
             </div>
         </section>
     </div>
@@ -327,6 +383,16 @@
             }
         }
     </script>
-    <script src="chatbot.js"></script>
+ <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Ask a question...">
+            <button onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
+    <div id="chatbot-toggle" class="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+    </div>
+    <script src="chat.js"></script>
 </body>
 </html> 
